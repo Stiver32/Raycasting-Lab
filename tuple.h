@@ -18,15 +18,24 @@ struct Tuple
         // When you need to test two floating point numbers for equivalence, compare their difference.
         // If the absolute value of their difference is less than some value (called EPSILON), you can consider them equal.
 
-        bool isVector()
-        {
-            return equal(_w, 0.0);
-        }
 
-        bool isPoint()
-        {
-            return equal(_w, 1.0);
-        }
 
 };
 
+
+Tuple point (double x, double y, double z)
+{
+    return Tuple(x,y,z,1.0);
+}
+
+
+bool isVector(Tuple tuple)
+{
+    return equal(tuple._w, 0.0);
+}
+
+bool isPoint(Tuple tuple)
+{
+    return equal(tuple._w, 1.0);
+    
+}
