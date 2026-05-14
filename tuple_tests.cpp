@@ -8,7 +8,7 @@ int main()
     
     assert(equal(a._x, 4.3)); //a.x = 4.3 // assert(equal(a.getX(), 4.3));
     assert(equal(a._y, -4.2)); //a.y = -4.2
-    assert(equal(a._z, 3.1)); //a.z = 3.1s
+    assert(equal(a._z, 3.1)); //a.z = 3.1ss
     assert(equal(a._w, 1.0)); //a.w = 1.0
 
     assert(a.isPoint()); //a is a point
