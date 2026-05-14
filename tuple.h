@@ -1,6 +1,5 @@
 #include "utility.h"
 
-
 struct Tuple
 {
     //private:
@@ -28,6 +27,10 @@ Tuple point (double x, double y, double z)
     return Tuple(x,y,z,1.0);
 }
 
+Tuple vector (double x, double y, double z)
+{
+    return Tuple(x,y,z,0.0);
+}
 
 bool isVector(Tuple tuple)
 {
@@ -37,5 +40,4 @@ bool isVector(Tuple tuple)
 bool isPoint(Tuple tuple)
 {
     return equal(tuple._w, 1.0);
-    
 }
