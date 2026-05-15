@@ -32,6 +32,18 @@ Tuple vector (double x, double y, double z)
     return Tuple(x,y,z,0.0);
 }
 
+Tuple addTuples(Tuple& tuple1, Tuple& tuple2)
+{
+    double x = tuple1._x + tuple2._x;
+    double y = tuple1._y + tuple2._y;
+    double z = tuple1._z + tuple2._z;
+    double w = tuple1._w + tuple2._w;
+    Tuple newTuple(x,y,z,w);
+    
+    return newTuple;
+}
+
+
 bool isVector(Tuple tuple)
 {
     return equal(tuple._w, 0.0);
@@ -41,3 +53,4 @@ bool isPoint(Tuple tuple)
 {
     return equal(tuple._w, 1.0);
 }
+
