@@ -4,28 +4,19 @@ struct Tuple
 {
     public:
     
-        double _x;
-        double _y;
-        double _z;
-        double _w;
+        double _x, _y, _z, _w;
 
         Tuple(double x, double y, double z, double w) : _x(x), _y(y), _z(z), _w(w){}
 };
 
 
-// HELPER FUNCTIONS
+// HELPER FUNCTIONS //
 
 //create a point
-Tuple point (double x, double y, double z)
-{
-    return Tuple(x,y,z,1.0);
-}
+Tuple point (double x, double y, double z) { return Tuple(x,y,z,1.0); }
 
 //create a vector
-Tuple vector (double x, double y, double z)
-{
-    return Tuple(x,y,z,0.0);
-}
+Tuple vector (double x, double y, double z) { return Tuple(x,y,z,0.0); }
 
 //add two tuples together
 Tuple addTuples(Tuple& tuple1, Tuple& tuple2)
@@ -49,6 +40,23 @@ Tuple vectorFromPoints(Tuple& point1, Tuple& point2)
 
     return newVector;
 }
+
+// subtract point from vector to get a point
+Tuple pointFromVector(Tuple& point1, Tuple& vector1)
+{
+    double x = point1._x - vector1._x;
+    double y = point1._y - vector1._y;
+    double z = point1._z - vector1._z;
+    auto newPoint = point(x,y,z);
+
+    return newPoint;
+}
+
+
+//subtract two vectors to get a vector
+//Tuple subtractVectors
+
+
 
 
 bool isVector(Tuple tuple)

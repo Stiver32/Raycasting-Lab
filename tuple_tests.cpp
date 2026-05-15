@@ -18,7 +18,7 @@ int main()
     assert(!isVector(a)); //a is not a vector
 
 
-    // TESTS FOR SCENARIO A1/A2
+    // TESTS FOR SCENARIO A1/A2 - SUBTRACTING AND ADDING TUPLES
     //note that adding a point to a vector produces w=1, which is another point
     //but adding a point to a point gives w=2, which is neither vector or point
     auto a1 = Tuple(3.0, -2.0, 5.0, 1.0); 
@@ -27,7 +27,10 @@ int main()
 
     auto p1 = point(3.0, 2.0, 1.0); 
     auto p2 = point(5.0, 6.0, 7.0);
+    auto v1 = vector(5.0, 6.0, 7.0);
+    
     auto v2 = vectorFromPoints(p1,p2); //subtract two points to get a vector
+    auto p3 = pointFromVector(p1, v1);//subtract a vector from a point to get a point
 
     assert(equal(addedTuples._x, 1.0));
     assert(equal(addedTuples._y, 1.0));
@@ -37,7 +40,6 @@ int main()
     assert(equal(v2._x, -2.0));
     assert(equal(v2._y, -4.0));
     assert(equal(v2._z, -6.0));
-
 
 
 
