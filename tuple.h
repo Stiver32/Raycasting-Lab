@@ -2,9 +2,6 @@
 
 struct Tuple
 {
-    //private:
-        
-
     public:
     
         double _x;
@@ -13,25 +10,24 @@ struct Tuple
         double _w;
 
         Tuple(double x, double y, double z, double w) : _x(x), _y(y), _z(z), _w(w){}
-
-        // When you need to test two floating point numbers for equivalence, compare their difference.
-        // If the absolute value of their difference is less than some value (called EPSILON), you can consider them equal.
-
-
-
 };
 
 
+// HELPER FUNCTIONS
+
+//create a point
 Tuple point (double x, double y, double z)
 {
     return Tuple(x,y,z,1.0);
 }
 
+//create a vector
 Tuple vector (double x, double y, double z)
 {
     return Tuple(x,y,z,0.0);
 }
 
+//add two tuples together
 Tuple addTuples(Tuple& tuple1, Tuple& tuple2)
 {
     double x = tuple1._x + tuple2._x;
@@ -39,8 +35,19 @@ Tuple addTuples(Tuple& tuple1, Tuple& tuple2)
     double z = tuple1._z + tuple2._z;
     double w = tuple1._w + tuple2._w;
     Tuple newTuple(x,y,z,w);
-    
+
     return newTuple;
+}
+
+//subtract two points to get a vector
+Tuple vectorFromPoints(Tuple& point1, Tuple& point2)
+{
+    double x = point1._x - point2._x;
+    double y = point1._y - point2._y;
+    double z = point1._z - point2._z;
+    auto newVector = vector(x,y,z);
+
+    return newVector;
 }
 
 
