@@ -1,73 +1,75 @@
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest.h"
 #include "tuple.h"
 
-int main()
+TEST_CASE("tuple with w=1 is a point") 
 {
-
-    // TESTS FOR SCENARIO A
-    //scenario: a tuple with w = 1.0 is a point, w = 0 is a vector
-    auto a = Tuple(4.3, -4.2, 3.1, 1.0); //given a <- tuple(4.3, -4.2, 3.1, 1.0)
-    auto p = point(4, -4, 3); //point() creates tuples with w=1
-    auto v = vector(4, -4, 3);
-
-    assert(equal(a._x, 4.3)); //a.x = 4.3 // assert(equal(a.getX(), 4.3));
-    assert(equal(a._y, -4.2)); //a.y = -4.2
-    assert(equal(a._z, 3.1)); //a.z = 3.1
-    assert(equal(a._w, 1.0)); //a.w = 1.0
-    
-    assert(isPoint(a)); //a is a point
-    assert(!isVector(a)); //a is not a vector
+    auto a = Tuple(4.3, -4.2, 3.1, 1.0);
+    CHECK(equal(a._x, 4.3));
+    CHECK(equal(a._y, -4.2)); //a.y = -4.2
+    CHECK(equal(a._z, 3.1)); //a.z = 3.1
+    CHECK(equal(a._w, 1.0)); //a.w = 1.0
+    CHECK(isPoint(a));
+    CHECK(!isVector(a)); //a is not a vector
+}
 
 
-    // TESTS FOR SCENARIO A1/A2 - SUBTRACTING AND ADDING TUPLES
+// TESTS FOR SCENARIO A1/A2 - SUBTRACTING AND ADDING TUPLES
     //note that adding a point to a vector produces w=1, which is another point
     //but adding a point to a point gives w=2, which is neither vector or point
+    
+
+TEST_CASE("Adding two touples")
+{
     auto a1 = Tuple(3.0, -2.0, 5.0, 1.0); 
     auto a2 = Tuple(-2.0, 3.0, 1.0, 0.0);
-    auto addedTuples = addTuples(a1,a2);
+    auto result = addTuples(a1,a2);
+        //added tuples
+    CHECK(equal(result._x, 1.0)); 
+    CHECK(equal(result._y, 1.0));
+    CHECK(equal(result._z, 6.0));
+    CHECK(equal(result._w, 1.0));
+}
 
-    auto p1 = point(3.0, 2.0, 1.0); 
-    auto p2 = point(5.0, 6.0, 7.0);
-    auto v1 = vector(3.0, 2.0, 1.0);
-    auto v2 = vector(5.0, 6.0, 7.0);
-    auto v3 = vector(1.0, -2.0, 3.0);
+TEST_CASE("Subtracting a vector from a point gives a point")
+{
+    auto p1 = makePoint(3.0, 2.0, 1.0); 
+    auto v1 = makeVector(5.0, 6.0, 7.0);
+    auto pR = pointFromVector(p1, v1);
+        
+    CHECK(equal(pR._x, -2.0)); 
+    CHECK(equal(pR._y,-4.0));
+    CHECK(equal(pR._z, -6.0));
+}
 
+TEST_CASE("Subtracting two points gives a vector")
+{
+    auto p1 = makePoint(3.0, 2.0, 1.0); 
+    auto p2 = makePoint(5.0, 6.0, 7.0);
+    auto vR = vectorFromPoints(p1,p2); //subtract two points to get a vector
+    CHECK(equal(vR._x, -2.0)); 
+    CHECK(equal(vR._y, -4.0));
+    CHECK(equal(vR._z, -6.0));
+}
+
+TEST_CASE("Subtracting two vectors gives a vector")
+{
+    auto v1 = makeVector(3.0, 2.0, 1.0);
+    auto v2 = makeVector(5.0, 6.0, 7.0);
+    auto vR = subtractVectors(v1,v2);//subtract vector from a vector to get a vector
     
-    auto p3 = pointFromVector(p1, v2);//subtract a vector from a point to get a point
-    auto v4 = vectorFromPoints(p1,p2); //subtract two points to get a vector
-    auto v5 = subtractVectors(v1,v2);//subtract vector from a vector to get a vector
-    auto v6 = negateVector(v3); //negate vector using zero vector
+    CHECK(equal(vR._x, -2.0)); 
+    CHECK(equal(vR._y, -4.0));
+    CHECK(equal(vR._z, -6.0));
 
-    //added tuples
-    assert(equal(addedTuples._x, 1.0)); 
-    assert(equal(addedTuples._y, 1.0));
-    assert(equal(addedTuples._z, 6.0));
-    assert(equal(addedTuples._w, 1.0));
+}
 
+TEST_CASE("Negating a vector")
+{
+    auto v1 = makeVector(1.0, -2.0, 3.0);
+    auto vR = negateVector(v1);
 
-    // point from vector
-    assert(equal(p3._x, -2.0)); 
-    assert(equal(p3._y, -4.0));
-    assert(equal(p3._z, -6.0));
-
-    // vector from points
-    assert(equal(v4._x, -2.0)); 
-    assert(equal(v4._y, -4.0));
-    assert(equal(v4._z, -6.0));
-
-    //subtract vectors
-    assert(equal(v5._x, -2.0)); 
-    assert(equal(v5._y, -4.0));
-    assert(equal(v5._z, -6.0));
-
-    //negate vector
-    assert(equal(v6._x, -1.0)); 
-    assert(equal(v6._y, 2.0));
-    assert(equal(v6._z, -3.0));
-
-
-
-
-
-    std::cout << "All tests passed\n";
-
+    CHECK(equal(vR._x, -1.0));
+    CHECK(equal(vR._y, 2.0));
+    CHECK(equal(vR._z, -3.0));
 }

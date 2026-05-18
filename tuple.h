@@ -13,10 +13,10 @@ struct Tuple
 // HELPER FUNCTIONS //
 
 //create a point
-Tuple point (double x, double y, double z) { return Tuple(x,y,z,1.0); }
+Tuple makePoint (double x, double y, double z) { return Tuple(x,y,z,1.0); }
 
 //create a vector
-Tuple vector (double x, double y, double z) { return Tuple(x,y,z,0.0); }
+Tuple makeVector (double x, double y, double z) { return Tuple(x,y,z,0.0); }
 
 //add two tuples together
 Tuple addTuples(Tuple& tuple1, Tuple& tuple2)
@@ -36,7 +36,7 @@ Tuple vectorFromPoints(Tuple& point1, Tuple& point2)
     double x = point1._x - point2._x;
     double y = point1._y - point2._y;
     double z = point1._z - point2._z;
-    auto newVector = vector(x,y,z);
+    auto newVector = makeVector(x,y,z);
 
     return newVector;
 }
@@ -47,7 +47,7 @@ Tuple pointFromVector(Tuple& point1, Tuple& vector1)
     double x = point1._x - vector1._x;
     double y = point1._y - vector1._y;
     double z = point1._z - vector1._z;
-    auto newPoint = point(x,y,z);
+    auto newPoint = makePoint(x,y,z);
 
     return newPoint;
 }
@@ -59,7 +59,7 @@ Tuple subtractVectors(Tuple& vector1, Tuple& vector2)
     double x = vector1._x - vector2._x;
     double y = vector1._y - vector2._y;
     double z = vector1._z - vector2._z;
-    auto newVector = vector(x,y,z);
+    auto newVector = makeVector(x,y,z);
 
     return newVector;
 }
@@ -70,11 +70,11 @@ Tuple subtractVectors(Tuple& vector1, Tuple& vector2)
 // obtain this by subtracting the vector from the zero vector (a tuple (0,0,0))
 Tuple negateVector(Tuple& vector1)
 {
-    auto zeroVector = vector(0,0,0);
+    auto zeroVector = makeVector(0,0,0);
     double x = zeroVector._x - vector1._x;
     double y = zeroVector._y - vector1._y;
     double z = zeroVector._z - vector1._z;
-    auto negatedVector = vector(x,y,z);
+    auto negatedVector = makeVector(x,y,z);
 
     return negatedVector;
 }
