@@ -27,19 +27,43 @@ int main()
 
     auto p1 = point(3.0, 2.0, 1.0); 
     auto p2 = point(5.0, 6.0, 7.0);
-    auto v1 = vector(5.0, 6.0, 7.0);
-    
-    auto v2 = vectorFromPoints(p1,p2); //subtract two points to get a vector
-    auto p3 = pointFromVector(p1, v1);//subtract a vector from a point to get a point
+    auto v1 = vector(3.0, 2.0, 1.0);
+    auto v2 = vector(5.0, 6.0, 7.0);
+    auto v3 = vector(1.0, -2.0, 3.0);
 
-    assert(equal(addedTuples._x, 1.0));
+    
+    auto p3 = pointFromVector(p1, v2);//subtract a vector from a point to get a point
+    auto v4 = vectorFromPoints(p1,p2); //subtract two points to get a vector
+    auto v5 = subtractVectors(v1,v2);//subtract vector from a vector to get a vector
+    auto v6 = negateVector(v3); //negate vector using zero vector
+
+    //added tuples
+    assert(equal(addedTuples._x, 1.0)); 
     assert(equal(addedTuples._y, 1.0));
     assert(equal(addedTuples._z, 6.0));
     assert(equal(addedTuples._w, 1.0));
 
-    assert(equal(v2._x, -2.0));
-    assert(equal(v2._y, -4.0));
-    assert(equal(v2._z, -6.0));
+
+    // point from vector
+    assert(equal(p3._x, -2.0)); 
+    assert(equal(p3._y, -4.0));
+    assert(equal(p3._z, -6.0));
+
+    // vector from points
+    assert(equal(v4._x, -2.0)); 
+    assert(equal(v4._y, -4.0));
+    assert(equal(v4._z, -6.0));
+
+    //subtract vectors
+    assert(equal(v5._x, -2.0)); 
+    assert(equal(v5._y, -4.0));
+    assert(equal(v5._z, -6.0));
+
+    //negate vector
+        // vector from points
+    assert(equal(v6._x, -1.0)); 
+    assert(equal(v6._y, 2.0));
+    assert(equal(v6._z, -3.0));
 
 
 

@@ -54,8 +54,30 @@ Tuple pointFromVector(Tuple& point1, Tuple& vector1)
 
 
 //subtract two vectors to get a vector
-//Tuple subtractVectors
+Tuple subtractVectors(Tuple& vector1, Tuple& vector2)
+{
+    double x = vector1._x - vector2._x;
+    double y = vector1._y - vector2._y;
+    double z = vector1._z - vector2._z;
+    auto newVector = vector(x,y,z);
 
+    return newVector;
+}
+
+//find the opposite of a vector.
+// e.g. given a vector pointing from a surface to a light source, 
+//      what vector points from the light source back to the surface?
+// obtain this by subtracting the vector from the zero vector (a tuple (0,0,0))
+Tuple negateVector(Tuple& vector1)
+{
+    auto zeroVector = vector(0,0,0);
+    double x = zeroVector._x - vector1._x;
+    double y = zeroVector._y - vector1._y;
+    double z = zeroVector._z - vector1._z;
+    auto negatedVector = vector(x,y,z);
+
+    return negatedVector;
+}
 
 
 
