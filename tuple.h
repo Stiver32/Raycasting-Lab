@@ -1,3 +1,5 @@
+#pragma once
+
 #include "utility.h"
 
 struct Tuple
@@ -41,7 +43,7 @@ Tuple vectorFromPoints(Tuple& point1, Tuple& point2)
     return newVector;
 }
 
-// subtract point from vector to get a point
+// subtract vector from point to get point
 Tuple pointFromVector(Tuple& point1, Tuple& vector1)
 {
     double x = point1._x - vector1._x;
@@ -70,13 +72,7 @@ Tuple subtractVectors(Tuple& vector1, Tuple& vector2)
 // obtain this by subtracting the vector from the zero vector (a tuple (0,0,0))
 Tuple negateVector(Tuple& vector1)
 {
-    auto zeroVector = makeVector(0,0,0);
-    double x = zeroVector._x - vector1._x;
-    double y = zeroVector._y - vector1._y;
-    double z = zeroVector._z - vector1._z;
-    auto negatedVector = makeVector(x,y,z);
-
-    return negatedVector;
+    return makeVector(-vector1._x, -vector1._y, -vector1._z);
 }
 
 

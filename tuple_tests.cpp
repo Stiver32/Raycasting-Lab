@@ -19,7 +19,7 @@ TEST_CASE("tuple with w=1 is a point")
     //but adding a point to a point gives w=2, which is neither vector or point
     
 
-TEST_CASE("Adding two touples")
+TEST_CASE("Adding two tuples")
 {
     auto a1 = Tuple(3.0, -2.0, 5.0, 1.0); 
     auto a2 = Tuple(-2.0, 3.0, 1.0, 0.0);
