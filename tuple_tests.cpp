@@ -60,7 +60,6 @@ int main()
     assert(equal(v5._z, -6.0));
 
     //negate vector
-        // vector from points
     assert(equal(v6._x, -1.0)); 
     assert(equal(v6._y, 2.0));
     assert(equal(v6._z, -3.0));
