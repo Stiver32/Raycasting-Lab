@@ -102,6 +102,23 @@ Tuple divideTupleScalar(Tuple& tuple1, double scalar)
 }
 
 
+double getVectorMagnitude(Tuple& tuple1)
+{
+    double sum = 
+    tuple1._x * tuple1._x +
+    tuple1._y * tuple1._y +
+    tuple1._z * tuple1._z +
+    tuple1._w * tuple1._w;
+
+    return std::sqrt(sum);
+}   
+
+
+
+
+
+
+
 bool isVector(Tuple tuple)
 {
     return equal(tuple._w, 0.0);

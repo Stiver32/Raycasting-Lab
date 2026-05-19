@@ -1,4 +1,5 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include <cmath>
 #include "doctest.h"
 #include "tuple.h"
 
@@ -105,4 +106,13 @@ TEST_CASE("Dividing a tuple by a scalar")
     CHECK(equal(aR._y, -1.0));
     CHECK(equal(aR._z, 1.5));
     CHECK(equal(aR._w, -2.0));
+}
+
+TEST_CASE("Computing magnitude of vector(1,0,0)")
+{
+    auto v1 = makeVector(1.0, 0.0, 0.0);
+    auto mR = getVectorMagnitude(v1);
+
+    CHECK(equal(mR, 1.0));
+
 }
