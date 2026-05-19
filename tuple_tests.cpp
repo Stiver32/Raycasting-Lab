@@ -46,7 +46,7 @@ TEST_CASE("Subtracting two points gives a vector")
 {
     auto p1 = makePoint(3.0, 2.0, 1.0); 
     auto p2 = makePoint(5.0, 6.0, 7.0);
-    auto vR = vectorFromPoints(p1,p2); //subtract two points to get a vector
+    auto vR = vectorFromPoints(p1,p2); 
     CHECK(equal(vR._x, -2.0)); 
     CHECK(equal(vR._y, -4.0));
     CHECK(equal(vR._z, -6.0));
@@ -56,12 +56,11 @@ TEST_CASE("Subtracting two vectors gives a vector")
 {
     auto v1 = makeVector(3.0, 2.0, 1.0);
     auto v2 = makeVector(5.0, 6.0, 7.0);
-    auto vR = subtractVectors(v1,v2);//subtract vector from a vector to get a vector
+    auto vR = subtractVectors(v1,v2);
     
     CHECK(equal(vR._x, -2.0)); 
     CHECK(equal(vR._y, -4.0));
     CHECK(equal(vR._z, -6.0));
-
 }
 
 TEST_CASE("Negating a vector")
@@ -72,4 +71,38 @@ TEST_CASE("Negating a vector")
     CHECK(equal(vR._x, -1.0));
     CHECK(equal(vR._y, 2.0));
     CHECK(equal(vR._z, -3.0));
+}
+
+
+TEST_CASE("Multiplying a tuple by a scalar")
+{
+    auto a1 = Tuple(1.0,-2.0,3.0,-4.0);
+    auto aR = multiplyTupleScalar(a1, 3.5);
+
+    CHECK(equal(aR._x, 3.5));
+    CHECK(equal(aR._y, -7.0));
+    CHECK(equal(aR._z, 10.5));
+    CHECK(equal(aR._w, -14.0));
+}
+
+TEST_CASE("Multiplying a tuple by a fraction")
+{
+    auto a1 = Tuple(1.0,-2.0,3.0,-4.0);
+    auto aR = multiplyTupleScalar(a1, 0.5);
+
+    CHECK(equal(aR._x, 0.5));
+    CHECK(equal(aR._y, -1.0));
+    CHECK(equal(aR._z, 1.5));
+    CHECK(equal(aR._w, -2.0));
+}
+
+TEST_CASE("Dividing a tuple by a scalar")
+{
+    auto a1 = Tuple(1.0,-2.0,3.0,-4.0);
+    auto aR = divideTupleScalar(a1, 2.0);
+
+    CHECK(equal(aR._x, 0.5));
+    CHECK(equal(aR._y, -1.0));
+    CHECK(equal(aR._z, 1.5));
+    CHECK(equal(aR._w, -2.0));
 }

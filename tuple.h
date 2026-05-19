@@ -76,6 +76,31 @@ Tuple negateVector(Tuple& vector1)
 }
 
 
+Tuple multiplyTupleScalar(Tuple& tuple1, double scalar)
+{
+    double x = tuple1._x * scalar;
+    double y = tuple1._y * scalar;
+    double z = tuple1._z * scalar;
+    double w = tuple1._w * scalar;
+
+    auto newTuple = Tuple(x,y,z,w);
+
+    return newTuple;
+}
+
+
+Tuple divideTupleScalar(Tuple& tuple1, double scalar)
+{
+    double x = tuple1._x / scalar;
+    double y = tuple1._y / scalar;
+    double z = tuple1._z / scalar;
+    double w = tuple1._w / scalar;
+
+    auto newTuple = Tuple(x,y,z,w);
+
+    return newTuple;
+}
+
 
 bool isVector(Tuple tuple)
 {
