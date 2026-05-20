@@ -27,9 +27,9 @@ Tuple addTuples(Tuple& tuple1, Tuple& tuple2)
     double y = tuple1._y + tuple2._y;
     double z = tuple1._z + tuple2._z;
     double w = tuple1._w + tuple2._w;
-    Tuple newTuple(x,y,z,w);
+    
 
-    return newTuple;
+    return Tuple(x,y,z,w);
 }
 
 //subtract two points to get a vector
@@ -38,9 +38,8 @@ Tuple vectorFromPoints(Tuple& point1, Tuple& point2)
     double x = point1._x - point2._x;
     double y = point1._y - point2._y;
     double z = point1._z - point2._z;
-    auto newVector = makeVector(x,y,z);
 
-    return newVector;
+    return makeVector(x,y,z);
 }
 
 // subtract vector from point to get point
@@ -49,9 +48,8 @@ Tuple pointFromVector(Tuple& point1, Tuple& vector1)
     double x = point1._x - vector1._x;
     double y = point1._y - vector1._y;
     double z = point1._z - vector1._z;
-    auto newPoint = makePoint(x,y,z);
 
-    return newPoint;
+    return makePoint(x,y,z);
 }
 
 
@@ -61,9 +59,8 @@ Tuple subtractVectors(Tuple& vector1, Tuple& vector2)
     double x = vector1._x - vector2._x;
     double y = vector1._y - vector2._y;
     double z = vector1._z - vector2._z;
-    auto newVector = makeVector(x,y,z);
 
-    return newVector;
+    return makeVector(x,y,z);
 }
 
 //find the opposite of a vector.
@@ -83,9 +80,7 @@ Tuple multiplyTupleScalar(Tuple& tuple1, double scalar)
     double z = tuple1._z * scalar;
     double w = tuple1._w * scalar;
 
-    auto newTuple = Tuple(x,y,z,w);
-
-    return newTuple;
+    return Tuple(x,y,z,w);
 }
 
 
@@ -96,10 +91,28 @@ Tuple divideTupleScalar(Tuple& tuple1, double scalar)
     double z = tuple1._z / scalar;
     double w = tuple1._w / scalar;
 
-    auto newTuple = Tuple(x,y,z,w);
 
-    return newTuple;
+    return Tuple(x,y,z,w);
 }
+Tuple normalizeVector(Tuple& vector1)
+{
+    
+    double sum =
+    vector1._x * vector1._x +
+    vector1._y * vector1._y + 
+    vector1._z * vector1._z;
+
+    double length = std::sqrt(sum);
+
+    double x = vector1._x / length;
+    double y = vector1._y / length;
+    double z = vector1._z / length;
+
+    return makeVector(x,y,z);
+}
+
+
+
 
 
 double getVectorMagnitude(Tuple& tuple1)
@@ -112,8 +125,6 @@ double getVectorMagnitude(Tuple& tuple1)
 
     return std::sqrt(sum);
 }   
-
-
 
 
 

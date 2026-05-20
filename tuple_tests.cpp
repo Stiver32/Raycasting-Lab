@@ -18,8 +18,6 @@ TEST_CASE("tuple with w=1 is a point")
 // TESTS FOR SCENARIO A1/A2 - SUBTRACTING AND ADDING TUPLES
     //note that adding a point to a vector produces w=1, which is another point
     //but adding a point to a point gives w=2, which is neither vector or point
-    
-
 TEST_CASE("Adding two tuples")
 {
     auto a1 = Tuple(3.0, -2.0, 5.0, 1.0); 
@@ -74,7 +72,6 @@ TEST_CASE("Negating a vector")
     CHECK(equal(vR._z, -3.0));
 }
 
-
 TEST_CASE("Multiplying a tuple by a scalar")
 {
     auto a1 = Tuple(1.0,-2.0,3.0,-4.0);
@@ -108,11 +105,36 @@ TEST_CASE("Dividing a tuple by a scalar")
     CHECK(equal(aR._w, -2.0));
 }
 
+
 TEST_CASE("Computing magnitude of vector(1,0,0)")
 {
     auto v1 = makeVector(1.0, 0.0, 0.0);
     auto mR = getVectorMagnitude(v1);
 
     CHECK(equal(mR, 1.0));
+}
+TEST_CASE("Computing magnitude of vector(0,1,0)")
+{
+    auto v1 = makeVector(0.0, 1.0, 0.0);
+    auto mR = getVectorMagnitude(v1);
+
+    CHECK(equal(mR, 1.0));
+}
+TEST_CASE("Computing magnitude of vector(0,0,1)")
+{
+    auto v1 = makeVector(0.0, 0.0, 1.0);
+    auto mR = getVectorMagnitude(v1);
+
+    CHECK(equal(mR, 1.0));
+}
+
+TEST_CASE("Normalize the vector (4,0,0)")
+{
+    auto v1 = makeVector(4.0, 0.0, 0.0);
+    auto vR = normalizeVector(v1);
+    
+    CHECK(equal(vR._x, 1.0));
+    CHECK(equal(vR._y, 0.0));
+    CHECK(equal(vR._z, 0.0));
 
 }
