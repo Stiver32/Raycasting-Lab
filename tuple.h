@@ -94,22 +94,6 @@ Tuple divideTupleScalar(Tuple& tuple1, double scalar)
 
     return Tuple(x,y,z,w);
 }
-Tuple normalizeVector(Tuple& vector1)
-{
-    
-    double sum =
-    vector1._x * vector1._x +
-    vector1._y * vector1._y + 
-    vector1._z * vector1._z;
-
-    double length = std::sqrt(sum);
-
-    double x = vector1._x / length;
-    double y = vector1._y / length;
-    double z = vector1._z / length;
-
-    return makeVector(x,y,z);
-}
 
 
 
@@ -127,6 +111,17 @@ double getVectorMagnitude(Tuple& tuple1)
 }   
 
 
+Tuple normalizeVector(Tuple& vector1)
+{
+    
+    double length = getVectorMagnitude(vector1);
+
+    double x = vector1._x / length;
+    double y = vector1._y / length;
+    double z = vector1._z / length;
+
+    return makeVector(x,y,z);
+}
 
 
 
